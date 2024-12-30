@@ -1,10 +1,8 @@
 import os
-from uuid import uuid4
 from dotenv import load_dotenv
 from langchain_chroma import Chroma
 from langchain_huggingface.embeddings import HuggingFaceEmbeddings
 from src.preprocess import create_documents
-from src.db_handler import save_to_chromadb
 from src.pipeline import query_rag
 from src.prompts import PROMPT_TEMPLATE_1
 load_dotenv('keys.env')
