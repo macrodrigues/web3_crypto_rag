@@ -2,7 +2,6 @@ import os
 from uuid import uuid4
 from dotenv import load_dotenv
 from langchain_chroma import Chroma
-import chromadb
 from langchain_huggingface.embeddings import HuggingFaceEmbeddings
 from src.preprocess import create_documents
 from src.db_handler import save_to_chromadb

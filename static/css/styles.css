@@ -1,0 +1,86 @@
+body { 
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 20px; 
+    font-family: Arial, sans-serif; 
+    background-color: #000000; 
+    color: #ffffff; 
+}
+
+#chat-container { 
+    height: 400px; 
+    overflow-y: auto; 
+    border: 1px solid #333; 
+    padding: 10px; 
+    margin-bottom: 20px; 
+    background-color: #000000; 
+}
+
+#user-input { 
+    width: 80%; 
+    padding: 10px; 
+    background-color: #1a1a1a; 
+    border: 1px solid #333; 
+    color: #ffffff; 
+    border-radius: 4px;
+}
+
+button { 
+    padding: 10px 20px; 
+    background-color: #4CAF50; 
+    color: white; 
+    border: none; 
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover { 
+    background-color: #45a049; 
+}
+
+.message { 
+    padding: 10px 15px; 
+    margin: 5px 0; 
+    border-radius: 10px; 
+    max-width: 80%;
+    border: 1px solid #333;
+}
+
+.user-message { 
+    background: #1a1a1a; 
+    margin-left: auto;
+}
+
+.bot-message { 
+    color: #a0a0a0; 
+    background: #000000; 
+    margin-right: auto;
+}
+
+.error-message { 
+    color: #ff6b6b; 
+    border: 1px solid #ff6b6b;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 5px 0;
+}
+
+.controls { 
+    margin-top: 10px; 
+}
+
+.loader { 
+    display: none; 
+    width: 24px; 
+    height: 24px; 
+    border: 3px solid #4CAF50; 
+    border-radius: 50%; 
+    border-top: 3px solid transparent; 
+    animation: spin 1s linear infinite; 
+    margin: 10px auto; 
+}
+
+@keyframes spin { 
+    0% { transform: rotate(0deg); } 
+    100% { transform: rotate(360deg); } 
+}
