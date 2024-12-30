@@ -29,7 +29,7 @@ if __name__ == '__main__':
 
     # Query RAG
     formatted_response, response_text = query_rag(
-        QUERY, db, PROMPT_TEMPLATE_1, 'llama3.2')
+        QUERY, db, PROMPT_TEMPLATE_1, 'llama3.2:1b')
 
     print(response_text)
     print("\n")
