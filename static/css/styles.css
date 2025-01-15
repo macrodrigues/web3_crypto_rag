@@ -293,12 +293,13 @@ body {
 }
 
 .donation-wallet {
-    margin: 15px 0;
+    margin-top: 15px;
+    margin-bottom: 15px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .wallet-label {
@@ -308,17 +309,22 @@ body {
 .wallet-address {
     font-family: 'Russo One', sans-serif;
     color: #4CAF50;
-    padding: 8px 16px;
-    background: rgba(76, 175, 80, 0.1);
-    border: 1px solid rgba(76, 175, 80, 0.3);
-    border-radius: 20px;
+    padding: 4px 16px;
     cursor: pointer;
     transition: all 0.3s ease;
+    background: none;
+    border: none;
+    font-size: 1.2em;
+}
+
+.wallet-address.copied {
+    color: #66ff6b;
+    text-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
 }
 
 .wallet-address:hover {
-    background: rgba(76, 175, 80, 0.2);
     transform: translateY(-2px);
+    text-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
 }
 
 .copy-message {
@@ -327,10 +333,7 @@ body {
 }
 
 .donation-thanks {
-    font-size: 0.9em;
-    color: #a0a0a0;
-    margin-top: 15px;
-    font-style: italic;
+    display: none;
 }
 
 @keyframes glow-border {
@@ -348,15 +351,16 @@ body {
 .x-link {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    margin-top: 20px;
-    padding: 8px 16px;
+    gap: 4px;
+    margin-top: 15px;
+    padding: 4px 10px;
     background: rgba(76, 175, 80, 0.1);
     border: 1px solid rgba(76, 175, 80, 0.3);
     border-radius: 20px;
     color: #4CAF50;
     text-decoration: none;
     transition: all 0.3s ease;
+    font-size: 0.8em;
 }
 
 .x-link:hover {
@@ -365,8 +369,8 @@ body {
 }
 
 .x-icon {
-    width: 20px;
-    height: 20px;
+    width: 14px;
+    height: 14px;
     fill: currentColor;
 }
 
@@ -556,4 +560,10 @@ html {
 /* Add padding to messages to prevent copy button overlap */
 .bot-message {
     padding-bottom: 40px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
 }

@@ -3,18 +3,15 @@
 import logging
 import sys
 import os
-from dotenv import load_dotenv
 from langchain_chroma import Chroma
 from langchain_huggingface.embeddings import HuggingFaceEmbeddings
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
-from src.preprocess import create_documents
 from src.pipeline import query_rag
 from src.prompts import PROMPT_TEMPLATE_1
 from flask_apscheduler import APScheduler
 from datetime import datetime
 from src.db_handler import update_chromadb
-from src.preprocess import create_documents
 
 class Config:
     SCHEDULER_API_ENABLED = True
@@ -190,8 +187,8 @@ if __name__ == '__main__':
             "scheduler setup completed successfully")
 
         # Start Flask server
-        logger.info("Starting Flask server on port 5000...")
-        app.run(host='0.0.0.0', port=5000, debug=True, use_reloader=False)
+        logger.info("Starting Flask server on port 5050...")
+        app.run(host='0.0.0.0', port=5050, debug=False, use_reloader=False)
     except Exception as e:
         logger.error("Critical server error: %s", str(e))
         sys.exit(1)

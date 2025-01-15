@@ -56,22 +56,25 @@
     <!-- Add donation section -->
     <div class="donation-container">
         <p class="donation-text">
-            Enjoying CryptoRAG? Help me keep the crypto insights flowing!
+            Enjoying CryptoRAG? Support with crypto to keep the insights flowing! 💚
         </p>
         <p class="donation-wallet">
-            <span class="wallet-label">Support with ETH:</span>
             <span class="wallet-address" onclick="copyWallet()" title="Click to copy">macrodrigues.eth</span>
-            <span class="copy-message" id="copyMessage">Click to copy</span>
         </p>
-        <p class="donation-thanks">
-            Thank you for supporting independent crypto news! 💚
-        </p>
-        <a href="https://x.com/marcoacavaco" target="_blank" rel="noopener noreferrer" class="x-link">
-            <svg class="x-icon" viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
-            <span>Follow me on X</span>
-        </a>
+        <div class="social-links">
+            <a href="https://x.com/marcoacavaco" target="_blank" rel="noopener noreferrer" class="x-link">
+                <svg class="x-icon" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                <span>Follow me on X</span>
+            </a>
+            <a href="https://medium.com/@macrodrigues/subscribe" target="_blank" rel="noopener noreferrer" class="x-link">
+                <svg class="x-icon" viewBox="0 0 24 24">
+                    <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+                </svg>
+                <span>Subscribe on Medium</span>
+            </a>
+        </div>
     </div>
 
     <template id="loading-message">
@@ -203,10 +206,10 @@
 
         function copyWallet() {
             navigator.clipboard.writeText('macrodrigues.eth');
-            const copyMessage = document.getElementById('copyMessage');
-            copyMessage.textContent = '✅ Copied!';
+            const walletSpan = document.querySelector('.wallet-address');
+            walletSpan.classList.add('copied');
             setTimeout(() => {
-                copyMessage.textContent = '🔄 Click to copy';
+                walletSpan.classList.remove('copied');
             }, 2000);
         }
     </script>
