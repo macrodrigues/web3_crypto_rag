@@ -83,6 +83,18 @@ def initialize_chatbot():
         logger.error("Error initializing ChromaDB: %s", str(e))
         raise
 
+def clear_log_files():
+    """Clear all log files at startup"""
+    log_files = ['app.log', 'update_documents.log']
+    try:
+        for log_file in log_files:
+            if os.path.exists(log_file):
+                with open(log_file, 'w') as f:
+                    f.truncate(0)
+                logger.info(f"Cleared {log_file}")
+    except Exception as e:
+        logger.error(f"Error clearing log files: {str(e)}")
+
 @app.route('/')
 def home():
     """Render the chat interface."""
@@ -136,7 +148,8 @@ def force_update():
     """Endpoint to force a database update"""
     try:
         update_db_task()
-        return jsonify({'status': 'success', 'message': 'Database updated successfully'})
+        return jsonify(
+            {'status': 'success', 'message': 'Database updated successfully'})
     except Exception as e:
         logger.error(f"Error forcing database update: {str(e)}")
         return jsonify({'error': 'Failed to update database'}), 500
@@ -151,6 +164,9 @@ def db_status():
 
 if __name__ == '__main__':
     try:
+        # Clear log files at startup
+        clear_log_files()
+        
         # Initialize chatbot components
         logger.info("Starting application initialization...")
         initialize_chatbot()
@@ -163,13 +179,15 @@ if __name__ == '__main__':
             id='update_db',
             func=update_db_task,
             trigger='interval',
-            minutes=10,
+            days=3,
             next_run_time=datetime.now()  # Run once immediately
         )
         
         scheduler.start()
         
-        logger.info("Chatbot initialization and scheduler setup completed successfully")
+        logger.info(
+            "Chatbot initialization and "
+            "scheduler setup completed successfully")
 
         # Start Flask server
         logger.info("Starting Flask server on port 5000...")
