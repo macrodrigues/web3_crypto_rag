@@ -1,19 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Web3 & Cryptocurrency Expert Chatbot</title>
+    <title>CryptoRAG - Crypto & Web3 Assistant</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">      
+    <meta name="description" content="Your AI-powered navigator for cryptocurrency news, Web3 insights, and blockchain updates">
+    <meta name="keywords" content="crypto news, blockchain, Web3, AI chatbot, cryptocurrency updates">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="CryptoRAG - Crypto & Web3 Assistant">
+    <meta property="og:description" content="Your AI-powered navigator for cryptocurrency news, Web3 insights, and blockchain updates">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+    
+    <!-- Existing CSS and fonts -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
-    <h1>Web3 & Cryptocurrency Expert Chatbot</h1>
-    <div id="chat-container"></div>
-    <div class="loader" id="loading"></div>
-    <input type="text" id="user-input" placeholder="Ask about blockchain, crypto, DeFi...">
-    <button onclick="sendMessage()">Send</button>
-    <div class="controls">
-        <button onclick="clearHistory()">Clear History</button>
+    <div class="title-container">
+        <h1 class="main-title">CryptoRAG</h1>
+        <p class="subtitle">Your AI Navigator Through the Crypto Multiverse</p>
     </div>
+
+    <!-- New wrapper div -->
+    <div class="main-frame">
+        <div id="chat-container"></div>
+        <div class="loading-container">
+            <div class="loader" id="loading"></div>
+            <div id="loading-timer">0s</div>
+        </div>
+        <div class="suggested-questions">
+            <p>Suggested questions:</p>
+            <div class="question-buttons">
+                <button onclick="askSuggestedQuestion('Give me the newest Bitcoin price predictions.')">Give me the newest Bitcoin price predictions</button>
+                <button onclick="askSuggestedQuestion('What you know about AI agents?')">What you know about AI agents?</button>
+                <button onclick="askSuggestedQuestion('What are the best memecoins to invest?')">What are the best memecoins to invest?</button>
+                <button onclick="askSuggestedQuestion('What are the Ethereum updates?')">What are the Ethereum updates?</button>
+            </div>
+        </div>    
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Ask about blockchain, crypto, DeFi...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+        <div class="clear-history-link">
+            <span onclick="clearHistory()">Clear History</span>
+        </div>
+    </div>
+
+    <!-- Add donation section -->
+    <div class="donation-container">
+        <p class="donation-text">
+            Enjoying CryptoRAG? Help me keep the crypto insights flowing!
+        </p>
+        <p class="donation-wallet">
+            <span class="wallet-label">Support with ETH:</span>
+            <span class="wallet-address" onclick="copyWallet()" title="Click to copy">macrodrigues.eth</span>
+            <span class="copy-message" id="copyMessage">Click to copy</span>
+        </p>
+        <p class="donation-thanks">
+            Thank you for supporting independent crypto news! 💚
+        </p>
+        <a href="https://x.com/marcoacavaco" target="_blank" rel="noopener noreferrer" class="x-link">
+            <svg class="x-icon" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span>Follow me on X</span>
+        </a>
+    </div>
+
+    <template id="loading-message">
+        <div class="message bot-message loading-message">
+            <span class="loading-dot">.</span>
+            <span class="loading-dot">.</span>
+            <span class="loading-dot">.</span>
+        </div>
+    </template>
 
     <script>
         window.onload = function() {
@@ -24,13 +91,62 @@
             const chatContainer = document.getElementById('chat-container');
             const messageDiv = document.createElement('div');
             messageDiv.className = isError ? 'error-message' : ('message ' + (isUser ? 'user-message' : 'bot-message'));
-            messageDiv.textContent = message;
+            messageDiv.style.whiteSpace = 'pre-wrap';
+            
+            if (!isUser && !isError) {
+                // Add spacing around "Sources:" and trim any extra spaces
+                message = message.replace(/(Sources:)\s*/g, '\n\n$1 ').trim();
+                
+                // Updated regex to capture URLs at the end of string
+                const urlRegex = /(https?:\/\/[^\s,]+)([,\s]|$)/g;
+                
+                // Replace URLs with clickable links while preserving trailing punctuation
+                const htmlMessage = message.replace(urlRegex, (match, url, punctuation) => 
+                    `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>${punctuation}`
+                );
+                
+                messageDiv.innerHTML = htmlMessage;
+                
+                // Add copy button for bot messages
+                const copyButton = document.createElement('button');
+                copyButton.className = 'copy-button';
+                copyButton.innerHTML = `
+                    <svg class="copy-icon" viewBox="0 0 24 24">
+                        <path d="M16 1H4C2.9 1 2 1.9 2 3v14h2V3h12V1zm3 4H8C6.9 5 6 5.9 6 7v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                    </svg>
+                `;
+                copyButton.onclick = () => {
+                    navigator.clipboard.writeText(message);
+                    copyButton.classList.add('copied');
+                    setTimeout(() => copyButton.classList.remove('copied'), 2000);
+                };
+                messageDiv.appendChild(copyButton);
+            } else {
+                messageDiv.textContent = message;
+            }
+            
+            messageDiv.style.opacity = '1';
             chatContainer.appendChild(messageDiv);
             chatContainer.scrollTop = chatContainer.scrollHeight;
         }
 
         async function clearHistory() {
-            //Commented out as /clear_history route is removed.
+            try {
+                const response = await fetch('/clear_chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                const data = await response.json();
+                
+                if (data.error) {
+                    console.error('Error:', data.error);
+                } else {
+                    const chatContainer = document.getElementById('chat-container');
+                    chatContainer.innerHTML = '';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
         }
 
         async function sendMessage() {
@@ -41,6 +157,13 @@
             addMessage(message, true);
             input.value = '';
             document.getElementById('loading').style.display = 'block';
+            document.getElementById('loading-timer').style.display = 'block';
+            
+            let seconds = 0;
+            const timer = setInterval(() => {
+                seconds++;
+                document.getElementById('loading-timer').textContent = `${seconds}s`;
+            }, 1000);
 
             try {
                 const response = await fetch('/chat', {
@@ -59,7 +182,10 @@
                 console.error('Error:', error);
                 addMessage('Sorry, there was an error processing your request.', false, true);
             } finally {
+                clearInterval(timer);
                 document.getElementById('loading').style.display = 'none';
+                document.getElementById('loading-timer').style.display = 'none';
+                document.getElementById('loading-timer').textContent = '0s';
             }
         }
 
@@ -68,6 +194,21 @@
                 sendMessage();
             }
         });
+
+        function askSuggestedQuestion(question) {
+            const input = document.getElementById('user-input');
+            input.value = question;
+            sendMessage();
+        }
+
+        function copyWallet() {
+            navigator.clipboard.writeText('macrodrigues.eth');
+            const copyMessage = document.getElementById('copyMessage');
+            copyMessage.textContent = '✅ Copied!';
+            setTimeout(() => {
+                copyMessage.textContent = '🔄 Click to copy';
+            }, 2000);
+        }
     </script>
 </body>
 </html>

@@ -9,3 +9,4 @@ langchain_ollama==0.2.2
 pandas==2.2.3
 protobuf==5.29.2
 python-dotenv==1.0.1
+flask-apscheduler

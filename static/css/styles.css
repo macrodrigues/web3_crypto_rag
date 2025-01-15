@@ -8,16 +8,40 @@ body {
 }
 
 #chat-container { 
-    height: 400px; 
+    height: 300px; 
     overflow-y: auto; 
-    border: 1px solid #333; 
-    padding: 10px; 
-    margin-bottom: 20px; 
-    background-color: #000000; 
+    margin-bottom: 10px; 
+    border-radius: 8px;
+    padding: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: #4CAF50 #1a1a1a;
+}
+
+#chat-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+#chat-container::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 4px;
+}
+
+#chat-container::-webkit-scrollbar-thumb {
+    background: #4CAF50;
+    border-radius: 4px;
+    border: 2px solid #1a1a1a;
+}
+
+/* Create a container for input and buttons */
+.input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
 }
 
 #user-input { 
-    width: 80%; 
+    width: 90%;
     padding: 10px; 
     background-color: #1a1a1a; 
     border: 1px solid #333; 
@@ -25,36 +49,106 @@ body {
     border-radius: 4px;
 }
 
-button { 
-    padding: 10px 20px; 
-    background-color: #4CAF50; 
-    color: white; 
-    border: none; 
-    cursor: pointer;
+/* Make all buttons in input container consistent */
+.input-container button,
+.input-container .controls button { 
+    height: 38px; /* Set fixed height for all buttons */
+    padding: 0 20px;
     border-radius: 4px;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-button:hover { 
-    background-color: #45a049; 
+/* Main send button specific styles */
+.input-container > button {
+    background-color: #4CAF50; 
+    color: white; 
+    border: none;
+}
+
+/* Clear history button specific styles */
+.input-container .controls button {
+    background: transparent;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    color: #4CAF50;
+    opacity: 0.8;
+}
+
+.input-container .controls button:hover {
+    background: rgba(76, 175, 80, 0.1);
+    border-color: rgba(76, 175, 80, 0.5);
+    opacity: 1;
+}
+
+/* Remove the old controls styles since we only have one button now */
+.controls {
+    display: inline-flex;
 }
 
 .message { 
-    padding: 10px 15px; 
-    margin: 5px 0; 
-    border-radius: 10px; 
+    padding: 12px 18px; 
+    margin: 8px 0; 
+    border-radius: 4px; 
     max-width: 80%;
-    border: 1px solid #333;
+    border: 1px solid #4caf4f56;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    position: relative;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease forwards;
 }
 
 .user-message { 
-    background: #1a1a1a; 
+    background: rgba(26, 26, 26, 0.8);
     margin-left: auto;
+    border-left: 3px solid #4CAF50;
+    animation: slideLeft 0.3s ease-out;
 }
 
 .bot-message { 
-    color: #a0a0a0; 
-    background: #000000; 
+    color: #e0e0e0; 
+    background: rgba(0, 0, 0, 0.8); 
     margin-right: auto;
+    border-right: 3px solid #4CAF50;
+    animation: slideRight 0.3s ease-out;
+    position: relative;
+}
+
+@keyframes slideRight {
+    from {
+        transform: translateX(-20px);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        transform: translateX(20px);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.bot-message a {
+    color: #4CAF50;
+    text-decoration: none;
+    border-bottom: 1px solid #4CAF50;
+    transition: all 0.3s ease;
+}
+
+.bot-message a:hover {
+    color: #fff;
+    text-shadow: 0 0 8px #4CAF50;
+    border-bottom-color: #fff;
 }
 
 .error-message { 
@@ -67,6 +161,22 @@ button:hover {
 
 .controls { 
     margin-top: 10px; 
+    text-align: right;
+    opacity: 0.8;
+}
+
+.loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    margin: 10px 30%;
+}
+
+#loading-timer {
+    display: none;
+    color: #4CAF50;
+    font-size: 14px;
 }
 
 .loader { 
@@ -77,10 +187,373 @@ button:hover {
     border-radius: 50%; 
     border-top: 3px solid transparent; 
     animation: spin 1s linear infinite; 
-    margin: 10px auto; 
+    margin: 10px 5%; 
 }
 
 @keyframes spin { 
     0% { transform: rotate(0deg); } 
     100% { transform: rotate(360deg); } 
+}
+
+.suggested-questions {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.suggested-questions p {
+    margin-bottom: 10px;
+    color: #a0a0a0;
+}
+
+.question-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.question-buttons button {
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+    color: #4CAF50;
+    transition: all 0.3s ease;
+}
+
+.question-buttons button:hover {
+    background: rgba(76, 175, 80, 0.2);
+    transform: translateY(-2px);
+}
+
+.title-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.main-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 4.2em;
+    color: #4CAF50;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    animation: pulse 8s ease-in-out infinite;
+}
+
+.main-title::first-letter {
+    text-transform: uppercase;
+}
+
+.capital-n {
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.2em;
+    color: #a0a0a0;
+    margin-top: 0;
+    letter-spacing: 1px;
+}
+
+@keyframes pulse {
+    0% {
+        color: #4CAF50;
+        -webkit-text-stroke: 1px #4CAF50;
+        text-shadow: 0 0 15px rgba(76, 175, 80, 0.4),
+                     0 0 25px rgba(76, 175, 80, 0.3);
+    }
+    50% {
+        color: #66ff6b;
+        -webkit-text-stroke: 1px #66ff6b;
+        text-shadow: 0 0 20px rgba(102, 255, 107, 0.5),
+                     0 0 30px rgba(102, 255, 107, 0.4);
+    }
+    100% {
+        color: #4CAF50;
+        -webkit-text-stroke: 1px #4CAF50;
+        text-shadow: 0 0 15px rgba(76, 175, 80, 0.4),
+                     0 0 25px rgba(76, 175, 80, 0.3);
+    }
+}
+
+.donation-container {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+}
+
+.donation-text {
+    font-size: 1.1em;
+    color: #e0e0e0;
+    margin-bottom: 15px;
+}
+
+.donation-wallet {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.wallet-label {
+    color: #a0a0a0;
+}
+
+.wallet-address {
+    font-family: 'Russo One', sans-serif;
+    color: #4CAF50;
+    padding: 8px 16px;
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.wallet-address:hover {
+    background: rgba(76, 175, 80, 0.2);
+    transform: translateY(-2px);
+}
+
+.copy-message {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.donation-thanks {
+    font-size: 0.9em;
+    color: #a0a0a0;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+@keyframes glow-border {
+    0% {
+        border-top-color: rgba(76, 175, 80, 0.3);
+    }
+    50% {
+        border-top-color: rgba(76, 175, 80, 0.6);
+    }
+    100% {
+        border-top-color: rgba(76, 175, 80, 0.3);
+    }
+}
+
+.x-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 8px 16px;
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 20px;
+    color: #4CAF50;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.x-link:hover {
+    background: rgba(76, 175, 80, 0.2);
+    transform: translateY(-2px);
+}
+
+.x-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.button-loading {
+    position: relative;
+    color: transparent;
+}
+
+.button-loading::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: button-spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes button-spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Add a subtle transition for all interactive elements */
+button, input, .wallet-address, .x-link {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add focus states for accessibility */
+button:focus, input:focus, .wallet-address:focus, .x-link:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.5);
+}
+
+/* Mobile-first adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .main-title {
+        font-size: 3em;
+    }
+
+    .donation-wallet {
+        flex-direction: column;
+    }
+
+    .question-buttons button {
+        width: 100%;
+    }
+
+    #user-input {
+        width: 70%;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    /* Already dark themed, but we could add specific dark mode adjustments */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0.5; 
+        transform: translateY(10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.loading-message {
+    background: rgba(76, 175, 80, 0.1) !important;
+}
+
+.loading-dot {
+    animation: loadingDots 1.5s infinite;
+    opacity: 0;
+}
+
+.loading-dot:nth-child(2) { animation-delay: 0.5s; }
+.loading-dot:nth-child(3) { animation-delay: 1s; }
+
+@keyframes loadingDots {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* New styles for the Clear History button */
+.controls button {
+    background: transparent;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    color: #4CAF50;
+    font-size: 0.9em;
+    padding: 10px 20px; /* Match send button padding */
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.controls button:hover {
+    background: rgba(76, 175, 80, 0.1);
+    border-color: rgba(76, 175, 80, 0.5);
+    opacity: 1;
+}
+
+.clear-history-link {
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 5px;
+}
+
+.clear-history-link span {
+    font-size: 0.8em;
+    color: rgba(76, 175, 80, 0.6);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.clear-history-link span:hover {
+    color: rgba(76, 175, 80, 0.9);
+    text-decoration: underline;
+}
+
+/* Add new main-frame class */
+.main-frame {
+    border: 0.5px solid #4CAF50;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    background-color: rgba(0, 0, 0, 0.8); 
+    box-shadow: 0 0 10px #4caf4f56;
+}
+
+.copy-button {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.2);
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bot-message:hover .copy-button {
+    opacity: 1;
+}
+
+.copy-icon {
+    width: 16px;
+    height: 16px;
+    fill: #4CAF50;
+    transition: all 0.3s ease;
+}
+
+.copy-button:hover {
+    background: rgba(76, 175, 80, 0.2);
+    transform: translateY(-2px);
+}
+
+.copy-button.copied {
+    background: rgba(76, 175, 80, 0.3);
+}
+
+.copy-button.copied .copy-icon {
+    fill: #66ff6b;
+}
+
+/* Add padding to messages to prevent copy button overlap */
+.bot-message {
+    padding-bottom: 40px;
 }

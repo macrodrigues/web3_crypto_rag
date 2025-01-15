@@ -1,0 +1,35 @@
+2025-01-15 03:25:36,163 - __main__ - INFO - Starting application initialization...
+2025-01-15 03:25:45,495 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-01-15 03:25:45,496 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-15 03:25:47,620 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-15 03:25:47,863 - __main__ - INFO - Successfully loaded ChromaDB collection
+2025-01-15 03:25:47,873 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-01-15 03:25:47,873 - apscheduler.scheduler - INFO - Added job "update_db" to job store "default"
+2025-01-15 03:25:47,874 - apscheduler.scheduler - INFO - Scheduler started
+2025-01-15 03:25:47,875 - apscheduler.executors.default - INFO - Running job "update_db (trigger: interval[3 days, 0:00:00], next run at: 2025-01-15 03:25:47 CET)" (scheduled at 2025-01-15 03:25:47.872781+01:00)
+2025-01-15 03:25:47,875 - __main__ - INFO - Chatbot initialization and scheduler setup completed successfully
+2025-01-15 03:25:47,876 - __main__ - INFO - Starting scheduled database update...
+2025-01-15 03:25:47,876 - __main__ - INFO - Starting Flask server on port 5000...
+2025-01-15 03:25:47,882 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-01-15 03:25:47,883 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-15 03:25:47,904 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://158.220.115.123:5000
+2025-01-15 03:25:47,905 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-15 03:25:51,392 - werkzeug - INFO - 127.0.0.1 - - [15/Jan/2025 03:25:51] "GET / HTTP/1.1" 200 -
+2025-01-15 03:25:52,125 - werkzeug - INFO - 127.0.0.1 - - [15/Jan/2025 03:25:52] "GET /static/css/styles.css HTTP/1.1" 200 -
+2025-01-15 03:25:52,919 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-15 03:26:08,550 - __main__ - INFO - Processing chat message: What is atole?...
+2025-01-15 03:26:08,892 - __main__ - INFO - Successfully generated response
+2025-01-15 03:26:08,894 - werkzeug - INFO - 127.0.0.1 - - [15/Jan/2025 03:26:08] "POST /chat HTTP/1.1" 200 -
+2025-01-15 03:26:15,043 - __main__ - INFO - Processing chat message: What are the Ethereum updates?...
+2025-01-15 03:26:15,477 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-15 03:26:25,697 - src.db_handler - INFO - Successfully refreshed ChromaDB collection with new documents
+2025-01-15 03:26:25,704 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-01-15 03:26:25,705 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-15 03:26:26,914 - __main__ - INFO - Successfully loaded ChromaDB collection
+2025-01-15 03:26:26,915 - __main__ - INFO - Scheduled database update completed successfully
+2025-01-15 03:26:26,915 - apscheduler.executors.default - INFO - Job "update_db (trigger: interval[3 days, 0:00:00], next run at: 2025-01-18 03:25:47 CET)" executed successfully
+2025-01-15 03:26:28,298 - __main__ - INFO - Successfully generated response
+2025-01-15 03:26:28,301 - werkzeug - INFO - 127.0.0.1 - - [15/Jan/2025 03:26:28] "POST /chat HTTP/1.1" 200 -
