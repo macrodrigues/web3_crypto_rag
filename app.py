@@ -5,7 +5,7 @@ import sys
 import os
 from langchain_chroma import Chroma
 from langchain_huggingface.embeddings import HuggingFaceEmbeddings
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_from_directory
 from flask_cors import CORS
 from src.pipeline import query_rag
 from src.prompts import PROMPT_TEMPLATE_1
@@ -91,6 +91,11 @@ def clear_log_files():
                 logger.info(f"Cleared {log_file}")
     except Exception as e:
         logger.error(f"Error clearing log files: {str(e)}")
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                          'favicon.ico',mimetype='image/vnd.microsoft.icon')
 
 @app.route('/')
 def home():
