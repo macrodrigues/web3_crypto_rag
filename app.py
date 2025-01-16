@@ -164,10 +164,6 @@ if __name__ == '__main__':
         # Clear log files at startup
         clear_log_files()
         
-        # Initialize chatbot components
-        logger.info("Starting application initialization...")
-        initialize_chatbot()
-        
         # Initialize scheduler
         scheduler.init_app(app)
         
@@ -176,19 +172,23 @@ if __name__ == '__main__':
             id='update_db',
             func=update_db_task,
             trigger='interval',
-            days=3,
+            days=1,
             next_run_time=datetime.now()  # Run once immediately
         )
         
         scheduler.start()
+
+        # Initialize chatbot components
+        logger.info("Starting application initialization...")
+        initialize_chatbot()        
         
         logger.info(
             "Chatbot initialization and "
             "scheduler setup completed successfully")
 
         # Start Flask server
-        logger.info("Starting Flask server on port 5050...")
-        app.run(host='0.0.0.0', port=5050, debug=False, use_reloader=False)
+        logger.info("Starting Flask server on port 5000...")
+        app.run(host='0.0.0.0', port=5000, debug=False, use_reloader=False)
     except Exception as e:
         logger.error("Critical server error: %s", str(e))
         sys.exit(1)
