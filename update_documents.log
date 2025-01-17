@@ -1,131 +1,32 @@
-2025-01-17 00:46:03,232 - __main__ - INFO - Cleared update_documents.log
-2025-01-17 00:46:03,239 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
-2025-01-17 00:46:03,239 - apscheduler.scheduler - INFO - Added job "update_db" to job store "default"
-2025-01-17 00:46:03,240 - apscheduler.scheduler - INFO - Scheduler started
-2025-01-17 00:46:03,240 - __main__ - INFO - Starting application initialization...
-2025-01-17 00:46:03,241 - apscheduler.executors.default - INFO - Running job "update_db (trigger: interval[1 day, 0:00:00], next run at: 2025-01-17 00:46:03 CET)" (scheduled at 2025-01-17 00:46:03.239005+01:00)
-2025-01-17 00:46:03,242 - __main__ - INFO - Starting scheduled database update...
-2025-01-17 00:46:17,590 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
-2025-01-17 00:46:17,591 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
-2025-01-17 00:46:17,591 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
-2025-01-17 00:46:17,591 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
-2025-01-17 00:46:19,991 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-2025-01-17 00:46:20,353 - __main__ - INFO - Successfully loaded ChromaDB collection
-2025-01-17 00:46:20,354 - __main__ - INFO - Chatbot initialization and scheduler setup completed successfully
-2025-01-17 00:46:20,354 - __main__ - INFO - Starting Flask server on port 5000...
-2025-01-17 00:46:20,359 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-01-17 02:25:31,693 - __main__ - INFO - Cleared update_documents.log
+2025-01-17 02:25:31,703 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2025-01-17 02:25:31,721 - apscheduler.scheduler - INFO - Added job "update_db" to job store "default"
+2025-01-17 02:25:31,721 - apscheduler.scheduler - INFO - Scheduler started
+2025-01-17 02:25:31,725 - __main__ - INFO - Starting application initialization...
+2025-01-17 02:25:31,726 - apscheduler.executors.default - INFO - Running job "update_db (trigger: interval[1 day, 0:00:00], next run at: 2025-01-17 02:25:31 CET)" (scheduled at 2025-01-17 02:25:31.703086+01:00)
+2025-01-17 02:25:31,726 - __main__ - INFO - Starting scheduled database update...
+2025-01-17 02:25:43,424 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-01-17 02:25:43,424 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-17 02:25:43,426 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-01-17 02:25:43,429 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-17 02:25:45,839 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-17 02:25:46,338 - __main__ - INFO - Successfully loaded ChromaDB collection
+2025-01-17 02:25:46,338 - __main__ - INFO - Chatbot initialization and scheduler setup completed successfully
+2025-01-17 02:25:46,339 - __main__ - INFO - Starting Flask server on port 5000...
+2025-01-17 02:25:46,342 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:5000
  * Running on http://158.220.115.123:5000
-2025-01-17 00:46:20,360 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
-2025-01-17 00:46:23,672 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:46:23] "GET / HTTP/1.1" 200 -
-2025-01-17 00:46:24,254 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
-2025-01-17 00:46:24,495 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:46:24] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
-2025-01-17 00:47:02,654 - src.db_handler - INFO - Successfully refreshed ChromaDB collection with new documents
-2025-01-17 00:47:02,662 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
-2025-01-17 00:47:02,662 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
-2025-01-17 00:47:03,905 - __main__ - INFO - Successfully loaded ChromaDB collection
-2025-01-17 00:47:03,905 - __main__ - INFO - Scheduled database update completed successfully
-2025-01-17 00:47:03,906 - apscheduler.executors.default - INFO - Job "update_db (trigger: interval[1 day, 0:00:00], next run at: 2025-01-18 00:46:03 CET)" executed successfully
-2025-01-17 00:48:35,274 - __main__ - INFO - Processing chat message: What you know about AI agents?...
-2025-01-17 00:48:36,099 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 00:49:04,252 - __main__ - INFO - Successfully generated response
-2025-01-17 00:49:04,254 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:49:04] "POST /chat HTTP/1.1" 200 -
-2025-01-17 00:50:31,074 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:50:31] "GET / HTTP/1.1" 200 -
-2025-01-17 00:50:31,849 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:50:31] "GET /static/css/styles.css HTTP/1.1" 200 -
-2025-01-17 00:50:33,067 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:50:33] "GET /static/images/cryptorag_logo.webp HTTP/1.1" 200 -
-2025-01-17 00:50:34,408 - __main__ - INFO - Processing chat message: What are the best memecoins to invest?...
-2025-01-17 00:50:34,934 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 00:50:51,046 - __main__ - INFO - Successfully generated response
-2025-01-17 00:50:51,048 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:50:51] "POST /chat HTTP/1.1" 200 -
-2025-01-17 00:50:54,906 - __main__ - INFO - Processing chat message: What you know about AI agents?...
-2025-01-17 00:50:55,186 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 00:50:59,203 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:50:59] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
-2025-01-17 00:51:37,229 - __main__ - INFO - Successfully generated response
-2025-01-17 00:51:37,231 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:51:37] "POST /chat HTTP/1.1" 200 -
-2025-01-17 00:52:39,400 - __main__ - INFO - Processing chat message: What are the Ethereum updates?...
-2025-01-17 00:52:39,947 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 00:52:43,364 - __main__ - INFO - Processing chat message: What you know about AI agents?...
-2025-01-17 00:52:43,693 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 00:52:44,577 - __main__ - INFO - Processing chat message: What you know about AI agents?...
-2025-01-17 00:52:45,034 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 00:52:45,482 - __main__ - INFO - Processing chat message: What you know about AI agents?...
-2025-01-17 00:52:45,825 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 00:52:46,740 - __main__ - INFO - Processing chat message: What you know about AI agents?...
-2025-01-17 00:52:47,050 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 00:52:47,288 - __main__ - INFO - Processing chat message: What you know about AI agents?...
-2025-01-17 00:52:47,723 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 00:53:00,301 - __main__ - INFO - Successfully generated response
-2025-01-17 00:53:00,306 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:53:00] "POST /chat HTTP/1.1" 200 -
-2025-01-17 00:53:00,951 - __main__ - INFO - Processing chat message: What you know about AI agents?...
-2025-01-17 00:53:01,292 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 00:53:01,487 - __main__ - ERROR - Error processing chat message: 'NoneType' object is not subscriptable
-2025-01-17 00:53:01,515 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:53:01] "[35m[1mPOST /chat HTTP/1.1[0m" 500 -
-2025-01-17 00:53:01,679 - __main__ - INFO - Successfully generated response
-2025-01-17 00:53:01,683 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:53:01] "POST /chat HTTP/1.1" 200 -
-2025-01-17 00:53:02,267 - __main__ - INFO - Processing chat message: What you know about AI agents?...
-2025-01-17 00:53:02,724 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 00:53:02,771 - __main__ - ERROR - Error processing chat message: 'NoneType' object is not subscriptable
-2025-01-17 00:53:02,774 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:53:02] "[35m[1mPOST /chat HTTP/1.1[0m" 500 -
-2025-01-17 00:53:02,817 - __main__ - INFO - Successfully generated response
-2025-01-17 00:53:02,822 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:53:02] "POST /chat HTTP/1.1" 200 -
-2025-01-17 00:53:04,276 - __main__ - INFO - Successfully generated response
-2025-01-17 00:53:04,277 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:53:04] "POST /chat HTTP/1.1" 200 -
-2025-01-17 00:53:05,145 - __main__ - INFO - Successfully generated response
-2025-01-17 00:53:05,146 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:53:05] "POST /chat HTTP/1.1" 200 -
-2025-01-17 00:53:18,976 - __main__ - INFO - Successfully generated response
-2025-01-17 00:53:18,981 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:53:18] "POST /chat HTTP/1.1" 200 -
-2025-01-17 00:53:37,826 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:53:37] "GET / HTTP/1.1" 200 -
-2025-01-17 00:53:38,506 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:53:38] "GET /static/css/styles.css HTTP/1.1" 200 -
-2025-01-17 00:53:39,820 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:53:39] "[36mGET /static/images/cryptorag_logo.webp HTTP/1.1[0m" 304 -
-2025-01-17 00:53:40,547 - __main__ - INFO - Processing chat message: What you know about AI agents?...
-2025-01-17 00:53:40,905 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 00:53:44,878 - __main__ - INFO - Processing chat message: What you know about AI agents?...
-2025-01-17 00:53:45,174 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 00:53:49,038 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:53:49] "POST /clear_chat HTTP/1.1" 200 -
-2025-01-17 00:53:55,204 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:53:55] "GET / HTTP/1.1" 200 -
-2025-01-17 00:53:55,895 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:53:55] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
-2025-01-17 00:53:57,218 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:53:57] "[36mGET /static/images/cryptorag_logo.webp HTTP/1.1[0m" 304 -
-2025-01-17 00:54:02,402 - __main__ - INFO - Processing chat message: Give me the newest Bitcoin price predictions....
-2025-01-17 00:54:02,944 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 00:54:03,770 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:54:03] "GET / HTTP/1.1" 200 -
-2025-01-17 00:54:04,428 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:54:04] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
-2025-01-17 00:54:05,794 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:54:05] "[36mGET /static/images/cryptorag_logo.webp HTTP/1.1[0m" 304 -
-2025-01-17 00:54:15,376 - __main__ - INFO - Successfully generated response
-2025-01-17 00:54:15,388 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:54:15] "POST /chat HTTP/1.1" 200 -
-2025-01-17 00:54:21,133 - __main__ - INFO - Successfully generated response
-2025-01-17 00:54:21,134 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:54:21] "POST /chat HTTP/1.1" 200 -
-2025-01-17 00:54:32,669 - __main__ - INFO - Successfully generated response
-2025-01-17 00:54:32,670 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:54:32] "POST /chat HTTP/1.1" 200 -
-2025-01-17 00:56:27,155 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:56:27] "GET / HTTP/1.1" 200 -
-2025-01-17 00:56:27,836 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:56:27] "GET /static/css/styles.css HTTP/1.1" 200 -
-2025-01-17 00:56:29,158 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:56:29] "[36mGET /static/images/cryptorag_logo.webp HTTP/1.1[0m" 304 -
-2025-01-17 00:56:30,187 - __main__ - INFO - Processing chat message: What are the Ethereum updates?...
-2025-01-17 00:56:30,666 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 00:56:45,243 - __main__ - INFO - Successfully generated response
-2025-01-17 00:56:45,246 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:56:45] "POST /chat HTTP/1.1" 200 -
-2025-01-17 00:56:57,602 - __main__ - INFO - Processing chat message: Give me the newest Bitcoin price predictions....
-2025-01-17 00:56:57,878 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 00:57:33,759 - __main__ - INFO - Successfully generated response
-2025-01-17 00:57:33,761 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:57:33] "POST /chat HTTP/1.1" 200 -
-2025-01-17 00:57:36,661 - __main__ - INFO - Processing chat message: What are the Ethereum updates?...
-2025-01-17 00:57:36,954 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 00:57:44,561 - __main__ - INFO - Successfully generated response
-2025-01-17 00:57:44,562 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:57:44] "POST /chat HTTP/1.1" 200 -
-2025-01-17 00:58:30,555 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:58:30] "GET / HTTP/1.1" 200 -
-2025-01-17 00:58:31,236 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:58:31] "GET /static/css/styles.css HTTP/1.1" 200 -
-2025-01-17 00:58:32,683 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:58:32] "[36mGET /static/images/cryptorag_logo.webp HTTP/1.1[0m" 304 -
-2025-01-17 00:58:33,713 - __main__ - INFO - Processing chat message: What are the Ethereum updates?...
-2025-01-17 00:58:34,342 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 00:59:02,065 - __main__ - INFO - Successfully generated response
-2025-01-17 00:59:02,068 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 00:59:02] "POST /chat HTTP/1.1" 200 -
-2025-01-17 01:28:40,240 - werkzeug - INFO - 205.210.31.144 - - [17/Jan/2025 01:28:40] "GET / HTTP/1.0" 200 -
-2025-01-17 01:46:52,198 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 01:46:52] "POST /clear_chat HTTP/1.1" 200 -
-2025-01-17 01:47:38,170 - __main__ - INFO - Processing chat message: What you know about AI agents?...
-2025-01-17 01:47:39,122 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
-2025-01-17 01:48:21,159 - __main__ - INFO - Successfully generated response
-2025-01-17 01:48:21,164 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 01:48:21] "POST /chat HTTP/1.1" 200 -
-2025-01-17 01:51:04,419 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 01:51:04] "POST /clear_chat HTTP/1.1" 200 -
-2025-01-17 01:54:01,501 - werkzeug - INFO - 147.185.132.61 - - [17/Jan/2025 01:54:01] "GET / HTTP/1.1" 200 -
-2025-01-17 02:06:11,827 - werkzeug - INFO - 185.142.236.35 - - [17/Jan/2025 02:06:11] "GET / HTTP/1.1" 200 -
-2025-01-17 02:06:12,146 - werkzeug - INFO - 185.142.236.35 - - [17/Jan/2025 02:06:12] "GET /static/images/cryptorag_logo.webp HTTP/1.1" 200 -
+2025-01-17 02:25:46,343 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-01-17 02:25:48,664 - chromadb.telemetry.product.posthog - INFO - Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-01-17 02:26:02,133 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 02:26:02] "GET / HTTP/1.1" 200 -
+2025-01-17 02:26:02,865 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 02:26:02] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-01-17 02:26:23,887 - src.db_handler - INFO - Successfully refreshed ChromaDB collection with new documents
+2025-01-17 02:26:23,893 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-01-17 02:26:23,894 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+2025-01-17 02:26:25,205 - __main__ - INFO - Successfully loaded ChromaDB collection
+2025-01-17 02:26:25,205 - __main__ - INFO - Scheduled database update completed successfully
+2025-01-17 02:26:25,206 - apscheduler.executors.default - INFO - Job "update_db (trigger: interval[1 day, 0:00:00], next run at: 2025-01-18 02:25:31 CET)" executed successfully
+2025-01-17 02:26:31,193 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 02:26:31] "GET / HTTP/1.1" 200 -
+2025-01-17 02:26:31,865 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 02:26:31] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+2025-01-17 02:26:32,716 - werkzeug - INFO - 127.0.0.1 - - [17/Jan/2025 02:26:32] "GET /static/images/cryptorag_logo.webp HTTP/1.1" 200 -
