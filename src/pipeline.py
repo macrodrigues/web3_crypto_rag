@@ -1,6 +1,10 @@
 from langchain_core.prompts import PromptTemplate
+import os
 from langchain_ollama.llms import OllamaLLM
 from openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv("keys.env")
 
 
 
@@ -11,7 +15,7 @@ def query_rag(query_text, db, prompt):
     """
 
     # Retrieving the context from the DB using similarity search
-    results = db.similarity_search_with_relevance_scores(query_text, k=2)
+    results = db.similarity_search_with_relevance_scores(query_text, k=3)
 
     print(results)
     print(results[0][1])
@@ -49,9 +53,7 @@ def query_rag(query_text, db, prompt):
 
         client = OpenAI(
             base_url="https://openrouter.ai/api/v1",
-            api_key=(
-                "sk-or-v1-4ce545bd6e1582523121c00699"
-                "a28bd48fdcd3a1d789c8c11414be8a0afdec19"),
+            api_key=os.getenv("API_KEY"),
             )
 
         completion = client.chat.completions.create(
