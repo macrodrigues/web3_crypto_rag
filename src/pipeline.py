@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 load_dotenv("keys.env")
 
 
-
 def query_rag(query_text, db, prompt):
     """
     Query a Retrieval-Augmented Generation (RAG) system using Chroma database,
@@ -22,7 +21,7 @@ def query_rag(query_text, db, prompt):
 
     # Check if there are any matching results or if
     # the relevance score is too low
-    if len(results) == 0 or results[0][1] < 0.2:
+    if len(results) == 0 or results[0][1] < 0.15:
         return (
             "No relevant information found. Try to ask something "
             "related to crypto, blockchain and web3.")

@@ -46,39 +46,13 @@ def update_db_task():
         logger.info("Starting scheduled database update...")
         
         # Update the database
-        update_chromadb()
-        
-        # Reinitialize the database connection
-        initialize_chatbot()
+        db = update_chromadb()
         
         last_update = datetime.now()
         logger.info("Scheduled database update completed successfully")
+
     except Exception as e:
         logger.error(f"Error in scheduled database update: {str(e)}")
-
-def initialize_chatbot():
-    """Initialize ChromaDB and embeddings."""
-    global db, embedding_model, last_update
-
-    try:
-        # Initialize Hugging Face embeddings
-        embedding_model = HuggingFaceEmbeddings(
-            model_name="sentence-transformers/all-MiniLM-L6-v2")
-
-        # Load existing database
-        db = Chroma(
-            collection_name="cointelegraph",
-            embedding_function=embedding_model,
-            persist_directory="chroma"
-        )
-        
-        if not last_update:
-            last_update = datetime.now()
-            
-        logger.info("Successfully loaded ChromaDB collection")
-    except Exception as e:
-        logger.error("Error initializing ChromaDB: %s", str(e))
-        raise
 
 def clear_log_files():
     """Clear all log files at startup"""
@@ -118,8 +92,9 @@ def clear_chat():
 @app.route('/chat', methods=['POST'])
 def chat():
     """Handle chat messages using RAG system."""
+    global db
     try:
-        if db is None or embedding_model is None:
+        if db is None:
             logger.error("Chatbot components not properly initialized")
             return jsonify({'error': 'Chatbot not initialized properly'}), 503
 
@@ -184,8 +159,7 @@ if __name__ == '__main__':
         scheduler.start()
 
         # Initialize chatbot components
-        logger.info("Starting application initialization...")
-        initialize_chatbot()        
+        logger.info("Starting application initialization...")     
         
         logger.info(
             "Chatbot initialization and "
