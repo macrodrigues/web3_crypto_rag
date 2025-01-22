@@ -41,7 +41,7 @@ def update_chromadb():
             model_name="sentence-transformers/all-MiniLM-L6-v2")
 
         # Number of documents to add
-        num_docs = 400
+        num_docs = 500
 
         # Create UUIDs for each document
         ids = [str(i) for i in range(1, num_docs + 1)]
@@ -51,31 +51,30 @@ def update_chromadb():
             'credentials.json', os.getenv("SHEET_ID"))
 
         # Create temporary directory for new database
-        if os.path.exists("chroma"):
-            # Load existing database
-            db = Chroma(
-                collection_name="cointelegraph",
-                embedding_function=embedding_model,
-                persist_directory="chroma"
-            )
-
-            db.update_documents(
-                ids=ids,
-                documents=documents[:num_docs],
-            )
-
-        else:
-            # Create fresh directory
-            os.makedirs('chroma')
-
-            # Initialize ChromaDB
-            db =Chroma.from_documents(
-                ids=ids,
-                documents=documents[:num_docs],
-                collection_name="cointelegraph",
-                embedding=embedding_model,
-                persist_directory='chroma'
+        # Load existing database
+        db = Chroma(
+            collection_name="cointelegraph",
+            embedding_function=embedding_model,
+            persist_directory="chroma"
         )
+
+        db.update_documents(
+            ids=ids,
+            documents=documents[:num_docs],
+        )
+
+        # else:
+        #     # Create fresh directory
+        #     os.makedirs('chroma')
+
+        #     # Initialize ChromaDB
+        #     db =Chroma.from_documents(
+        #         ids=ids,
+        #         documents=documents[:num_docs],
+        #         collection_name="cointelegraph",
+        #         embedding=embedding_model,
+        #         persist_directory='chroma'
+        # )
 
         logger.info(
             "Successfully refreshed ChromaDB collection with new documents")
